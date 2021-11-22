@@ -223,18 +223,22 @@ internal struct BottomSheetView<hContent: View, mContent: View, bottomSheetPosit
                 if height <= -0.1 && height > -0.3 {
                     if currentIndex < self.allCases.endIndex - 1 {
                         self.bottomSheetPosition = self.allCases[currentIndex + 1]
+                        $bottomSheetPosition.wrappedValue = self.allCases[currentIndex + 1]
                     }
                 } else if height <= -0.3 {
                     self.bottomSheetPosition = self.allCases[self.allCases.endIndex - 1]
                 } else if height >= 0.1 && height < 0.3 {
                     if currentIndex > self.allCases.startIndex && (self.allCases[currentIndex - 1].rawValue != 0 || (self.allCases[currentIndex - 1].rawValue == 0 && self.options.swipeToDismiss))  {
                         self.bottomSheetPosition = self.allCases[currentIndex - 1]
+                        $bottomSheetPosition.wrappedValue = self.allCases[currentIndex - 1]
                     }
                 } else if height >= 0.3 {
                     if (self.allCases[self.allCases.startIndex].rawValue == 0 && self.options.swipeToDismiss) || self.allCases[self.allCases.startIndex].rawValue != 0 {
                         self.bottomSheetPosition = self.allCases[self.allCases.startIndex]
+                        $bottomSheetPosition.wrappedValue = self.allCases[self.allCases.startIndex]
                     } else {
                         self.bottomSheetPosition = self.allCases[self.allCases.startIndex + 1]
+                        $bottomSheetPosition.wrappedValue = self.allCases[self.allCases.startIndex + 1]
                     }
                 }
             }
